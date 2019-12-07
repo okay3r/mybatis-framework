@@ -1,0 +1,5 @@
+top/okay3r/mybatis/sqlsession/SqlSessionFactory.class
+test/dao/UserDao.class
+test/pojo/User.class
+top/okay3r/mybatis/sqlsession/SqlSession.class
+test/dao/UserDaoImpl.class
