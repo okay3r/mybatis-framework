@@ -30,7 +30,7 @@ public class DefaultExecuteHandler implements ExecuteHandler {
         List resultList = new ArrayList<>();
         if ("prepared".equals(statementInfo.getStatementType())) {
             PreparedStatement preparedStatement = connection.prepareStatement(sql);
-            if (parameterTypeClass == Integer.class) {
+            if (parameterTypeClass == Integer.class || parameterTypeClass == String.class) {
                 preparedStatement.setObject(1, param);
             } else {
                 List<ParameterMapping> parameterMappingList = statementInfo.getSqlSource().getBindingSql().getParameterMappingList();

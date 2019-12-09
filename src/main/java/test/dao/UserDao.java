@@ -3,6 +3,7 @@ package test.dao;
 import test.pojo.User;
 
 import java.sql.SQLException;
+import java.util.List;
 
 /**
  * Created By Darius.
@@ -14,4 +15,7 @@ import java.sql.SQLException;
  */
 public interface UserDao {
     User queryUserById(Integer id) throws SQLException, NoSuchFieldException, InstantiationException, IllegalAccessException;
+
+    List<User> queryUserByName(String username) throws SQLException, InstantiationException, IllegalAccessException,
+            NoSuchFieldException;
 }
