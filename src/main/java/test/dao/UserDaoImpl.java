@@ -4,6 +4,7 @@ import test.pojo.User;
 import top.okay3r.mybatis.sqlsession.SqlSession;
 import top.okay3r.mybatis.sqlsession.SqlSessionFactory;
 
+import java.sql.Date;
 import java.sql.SQLException;
 import java.util.List;
 
@@ -31,11 +32,58 @@ public class UserDaoImpl implements UserDao {
     }
 
     @Override
-    public List<User> queryUserByName(String username) throws SQLException, InstantiationException,
+    public List<User> queryUserByName(String username, String sex) throws SQLException, InstantiationException,
             IllegalAccessException
             , NoSuchFieldException {
         SqlSession sqlSession = sqlSessionFactory.openSession();
-        List<User> resultList = sqlSession.selectList("test.queryUserByName", username);
+        User user = new User();
+        user.setUsername(username);
+        user.setSex(sex);
+
+        List<User> resultList = sqlSession.selectList("test.queryUserByName", user);
         return resultList;
     }
+
+    @Override
+    public Integer insertUser(String username, Date birthday, String sex, String address) throws SQLException,
+            NoSuchFieldException,
+            IllegalAccessException {
+        SqlSession sqlSession = sqlSessionFactory.openSession();
+        User user = new User();
+        user.setUsername(username);
+        user.setBirthday(birthday);
+        user.setSex(sex);
+        user.setAddress(address);
+        Integer id = sqlSession.insert("test.insertUser", user);
+        return id;
+    }
+
+    @Override
+    public Integer updateUserNameById(Integer id, String username) throws IllegalAccessException, NoSuchFieldException, SQLException {
+        SqlSession sqlSession = sqlSessionFactory.openSession();
+        User user = new User();
+        user.setId(id);
+        user.setUsername(username);
+        Integer updateRows = sqlSession.update("test.updateUserNameById", user);
+        return updateRows;
+    }
+
+    @Override
+    public Integer deleteUserById(Integer id) throws IllegalAccessException, NoSuchFieldException, SQLException {
+        SqlSession sqlSession = sqlSessionFactory.openSession();
+        Integer res = sqlSession.delete("test.deleteUserById", id);
+        return res;
+    }
+
+    @Override
+    public Integer deleteUserByNameAndSex(String username, String sex) throws IllegalAccessException, NoSuchFieldException, SQLException {
+        SqlSession sqlSession = sqlSessionFactory.openSession();
+        User user = new User();
+        user.setUsername(username);
+        user.setSex(sex);
+        Integer res = sqlSession.delete("test.deleteUserByNameAndSex", user);
+        return res;
+    }
+
+
 }

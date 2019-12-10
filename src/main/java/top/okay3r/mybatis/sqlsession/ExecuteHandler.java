@@ -14,4 +14,10 @@ import java.sql.SQLException;
  */
 public interface ExecuteHandler {
     <T> T query(Configuration configuration, String statementId, Object param) throws SQLException, IllegalAccessException, InstantiationException, NoSuchFieldException;
+
+    Integer insert(Configuration configuration, String statementId, Object param) throws SQLException, NoSuchFieldException, IllegalAccessException;
+
+    Integer update(Configuration configuration, String statementId, Object param) throws SQLException, NoSuchFieldException, IllegalAccessException;
+
+    Integer delete(Configuration configuration, String statementId, Object param) throws SQLException, NoSuchFieldException, IllegalAccessException;
 }

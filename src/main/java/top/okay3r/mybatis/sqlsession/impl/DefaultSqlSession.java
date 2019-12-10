@@ -1,11 +1,9 @@
 package top.okay3r.mybatis.sqlsession.impl;
 
 import top.okay3r.mybatis.config.Configuration;
-import top.okay3r.mybatis.config.sql.StatementInfo;
 import top.okay3r.mybatis.sqlsession.ExecuteHandler;
 import top.okay3r.mybatis.sqlsession.SqlSession;
 
-import javax.sql.DataSource;
 import java.sql.SQLException;
 import java.util.List;
 
@@ -39,4 +37,27 @@ public class DefaultSqlSession implements SqlSession {
         List<T> resultList = executeHandler.query(configuration, statementId, param);
         return resultList;
     }
+
+    @Override
+    public Integer insert(String statementId, Object param) throws SQLException, NoSuchFieldException, IllegalAccessException {
+        ExecuteHandler executeHandler = new DefaultExecuteHandler();
+        Integer res = executeHandler.insert(configuration, statementId, param);
+        return res;
+    }
+
+    @Override
+    public Integer update(String statementId, Object param) throws NoSuchFieldException, IllegalAccessException, SQLException {
+        ExecuteHandler executeHandler = new DefaultExecuteHandler();
+        Integer updateRows = executeHandler.update(configuration, statementId, param);
+        return updateRows;
+    }
+
+    @Override
+    public Integer delete(String statementId, Object param) throws NoSuchFieldException, IllegalAccessException, SQLException {
+        ExecuteHandler executeHandler = new DefaultExecuteHandler();
+        Integer updateRows = executeHandler.delete(configuration, statementId, param);
+        return updateRows;
+    }
+
+
 }

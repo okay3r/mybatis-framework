@@ -24,13 +24,22 @@ public class XMLMapperParser {
 
     public void parseMapper(Element mapperElement) {
         String namespace = mapperElement.attributeValue("namespace");
+
         List<Element> selectStatementList = mapperElement.elements("select");
-        parseSelectStatement(namespace, selectStatementList);
-    //    TODO insert、update、delete
+        parseStatement(namespace, selectStatementList);
+
+        List<Element> insertStatementList = mapperElement.elements("insert");
+        parseStatement(namespace, insertStatementList);
+
+        List<Element> updateStatementList = mapperElement.elements("update");
+        parseStatement(namespace, updateStatementList);
+
+        List<Element> deleteStatementList = mapperElement.elements("delete");
+        parseStatement(namespace, deleteStatementList);
     }
 
 
-    public void parseSelectStatement(String namespace, List<Element> selectStatementList) {
+    public void parseStatement(String namespace, List<Element> selectStatementList) {
         for (Element element : selectStatementList) {
             String statementId = namespace + "." + element.attributeValue("id");
             String parameterType = element.attributeValue("parameterType");

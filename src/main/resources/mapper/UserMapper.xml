@@ -1,12 +1,50 @@
 <mapper namespace="test">
-    <!-- select标签，封装了SQL语句信息、入参类型、结果映射类型 -->
     <select id="queryUserById" parameterType="java.lang.Integer"
             resultType="test.pojo.User" statementType="prepared">
-        SELECT * FROM user WHERE id = #{id}
+        SELECT
+        *
+        FROM user
+        WHERE
+        id = #{id}
     </select>
 
-    <select id="queryUserByName" parameterType="java.lang.String"
+    <select id="queryUserByName" parameterType="test.pojo.User"
             resultType="test.pojo.User" statementType="prepared">
-        SELECT * FROM user WHERE sex = #{username}
+        SELECT
+        *
+        FROM user
+        WHERE
+        username=#{username} AND sex = #{sex}
     </select>
+
+    <insert id="insertUser" parameterType="test.pojo.User"
+            resultType="java.lang.Integer" statementType="prepared">
+        INSERT INTO
+        user
+        (username,birthday,sex,address)
+        VALUES
+        (#{username},#{birthday},#{sex},#{address})
+    </insert>
+
+    <update id="updateUserNameById" parameterType="test.pojo.User"
+            resultType="java.lang.Integer" statementType="prepared">
+        UPDATE user
+        SET user.username=#{username}
+        WHERE id=#{id}
+    </update>
+
+    <delete id="deleteUserById" parameterType="java.lang.Integer"
+            resultType="java.lang.Integer" statementType="prepared">
+        DELETE
+        FROM user
+        WHERE id=#{id}
+    </delete>
+
+    <delete id="deleteUserByNameAndSex" parameterType="test.pojo.User"
+            resultType="java.lang.Integer" statementType="prepared">
+        DELETE
+        FROM user
+        WHERE
+        username=#{username} AND sex=#{sex}
+    </delete>
 </mapper>
