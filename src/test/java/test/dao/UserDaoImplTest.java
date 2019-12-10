@@ -65,7 +65,7 @@ public class UserDaoImplTest {
     @Test
     public void testDeleteUserByNameAndSex() throws IllegalAccessException, NoSuchFieldException, SQLException {
         UserDao userDao = new UserDaoImpl(sqlSessionFactory);
-        Integer res = userDao.deleteUserByNameAndSex("李逵", "男");
+        Integer res = userDao.deleteUserByNameAndSex("张飞", "男");
         System.out.println(res);
     }
 }

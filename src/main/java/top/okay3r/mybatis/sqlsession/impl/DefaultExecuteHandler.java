@@ -67,7 +67,7 @@ public class DefaultExecuteHandler implements ExecuteHandler {
     }
 
     @Override
-    public Integer update(Configuration configuration, String statementId, Object param) throws SQLException, NoSuchFieldException, IllegalAccessException {
+    public Integer updateOrDelete(Configuration configuration, String statementId, Object param) throws SQLException, NoSuchFieldException, IllegalAccessException {
         Connection connection = configuration.getDataSource().getConnection();
         StatementInfo statementInfo = configuration.getStatementInfoMap().get(statementId);
         String parameterType = statementInfo.getStatementType();
@@ -78,19 +78,6 @@ public class DefaultExecuteHandler implements ExecuteHandler {
         }
         return i == 0 ? null : i;
     }
-
-    @Override
-    public Integer delete(Configuration configuration, String statementId, Object param) throws SQLException, NoSuchFieldException, IllegalAccessException {
-        Connection connection = configuration.getDataSource().getConnection();
-        StatementInfo statementInfo = configuration.getStatementInfoMap().get(statementId);
-        int i = 0;
-        if ("prepared".equals(statementInfo.getStatementType())) {
-            PreparedStatement preparedStatement = initPreparedStatement(param, statementInfo, connection);
-            i = preparedStatement.executeUpdate();
-        }
-        return i == 0 ? null : i;
-    }
-
 
     public PreparedStatement initPreparedStatement(Object param, StatementInfo statementInfo, Connection connection) throws SQLException, NoSuchFieldException, IllegalAccessException {
         String sql = statementInfo.getSqlSource().getBindingSql().getSql();

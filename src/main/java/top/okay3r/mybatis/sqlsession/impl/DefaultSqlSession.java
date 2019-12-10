@@ -48,14 +48,14 @@ public class DefaultSqlSession implements SqlSession {
     @Override
     public Integer update(String statementId, Object param) throws NoSuchFieldException, IllegalAccessException, SQLException {
         ExecuteHandler executeHandler = new DefaultExecuteHandler();
-        Integer updateRows = executeHandler.update(configuration, statementId, param);
+        Integer updateRows = executeHandler.updateOrDelete(configuration, statementId, param);
         return updateRows;
     }
 
     @Override
     public Integer delete(String statementId, Object param) throws NoSuchFieldException, IllegalAccessException, SQLException {
         ExecuteHandler executeHandler = new DefaultExecuteHandler();
-        Integer updateRows = executeHandler.delete(configuration, statementId, param);
+        Integer updateRows = executeHandler.updateOrDelete(configuration, statementId, param);
         return updateRows;
     }
 

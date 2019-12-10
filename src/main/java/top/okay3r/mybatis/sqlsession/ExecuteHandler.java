@@ -17,7 +17,6 @@ public interface ExecuteHandler {
 
     Integer insert(Configuration configuration, String statementId, Object param) throws SQLException, NoSuchFieldException, IllegalAccessException;
 
-    Integer update(Configuration configuration, String statementId, Object param) throws SQLException, NoSuchFieldException, IllegalAccessException;
+    Integer updateOrDelete(Configuration configuration, String statementId, Object param) throws SQLException, NoSuchFieldException, IllegalAccessException;
 
-    Integer delete(Configuration configuration, String statementId, Object param) throws SQLException, NoSuchFieldException, IllegalAccessException;
 }
