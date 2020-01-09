@@ -19,11 +19,14 @@ public class SqlSessionFactoryBuilder {
     private Configuration configuration;
 
     public SqlSessionFactoryBuilder() {
+        //创建全局唯一的Configuration配置对象
         this.configuration = new Configuration();
     }
 
     public SqlSessionFactory initConfiguration(InputStream inputStream) {
         Document document = DocumentReader.createDocument(inputStream);
+
+        //解析全局xml配置文件 sqlMapConfig.xml
         new XMLConfigParser(configuration).parseConfig(document.getRootElement());
         return build();
     }

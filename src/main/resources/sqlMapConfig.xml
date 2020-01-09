@@ -11,6 +11,17 @@
                 <property name="password" value="root"></property>
             </dataSource>
         </environment>
+        <!--<environment id="dev">
+            &lt;!&ndash; 配置数据源信息 &ndash;&gt;
+            <dataSource type="org.apache.commons.dbcp.BasicDataSource">
+                <property name="driver" value="com.mysql.jdbc.Driver"></property>
+                <property name="url"
+                          value="jdbc:mysql://localhost:3306/studyData"></property>
+                <property name="username" value="root"></property>
+                <property name="password" value="root"></property>
+            </dataSource>
+        </environment>-->
+
     </environments>
 
     <!-- 映射文件加载 -->

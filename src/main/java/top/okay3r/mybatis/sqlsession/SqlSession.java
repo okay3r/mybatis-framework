@@ -22,5 +22,6 @@ public interface SqlSession {
 
     Integer update(String statementId, Object param) throws NoSuchFieldException, IllegalAccessException, SQLException;
 
-    Integer delete(String statementId, Object param) throws NoSuchFieldException, IllegalAccessException, SQLException;
+    Integer delete(String statementId, Object param) throws NoSuchFieldException, IllegalAccessException,
+            SQLException;
 }

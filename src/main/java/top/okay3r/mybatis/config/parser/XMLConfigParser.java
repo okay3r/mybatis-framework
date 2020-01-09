@@ -27,7 +27,10 @@ public class XMLConfigParser {
     }
 
     public void parseConfig(Element root) {
+        //解析全局配置
         Element environments = root.element("environments");
+
+        //解析mapper配置文件
         Element mappers = root.element("mappers");
         parseEnvironments(environments);
         parseMappers(mappers);
@@ -39,6 +42,8 @@ public class XMLConfigParser {
         for (Element environment : environmentList) {
             String id = environment.attributeValue("id");
             if (id.equals(defaultId)) {
+
+                //解析数据库配置
                 parseDataSource(environment.element("dataSource"));
             }
         }
@@ -71,6 +76,7 @@ public class XMLConfigParser {
             String resource = mapper.attributeValue("resource");
             InputStream inputStream = this.getClass().getClassLoader().getResourceAsStream(resource);
             Document document = DocumentReader.createDocument(inputStream);
+            //逐个解析mapper.xml文件
             new XMLMapperParser(configuration).parseMapper(document.getRootElement());
         }
     }

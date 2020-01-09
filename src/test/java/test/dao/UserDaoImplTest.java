@@ -68,4 +68,5 @@ public class UserDaoImplTest {
         Integer res = userDao.deleteUserByNameAndSex("张飞", "男");
         System.out.println(res);
     }
+
 }
