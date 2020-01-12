@@ -1,6 +1,6 @@
 <mapper namespace="test">
     <select id="queryUserById" parameterType="java.lang.Integer"
-            resultType="test.pojo.User" statementType="prepared">
+            resultType="top.okay3r.mybatis.pojo.User" statementType="prepared">
         SELECT
         *
         FROM user
@@ -8,8 +8,8 @@
         id = #{id}
     </select>
 
-    <select id="queryUserByName" parameterType="test.pojo.User"
-            resultType="test.pojo.User" statementType="prepared">
+    <select id="queryUserByName" parameterType="top.okay3r.mybatis.pojo.User"
+            resultType="top.okay3r.mybatis.pojo.User" statementType="prepared">
         SELECT
         *
         FROM user
@@ -17,7 +17,7 @@
         username=#{username} AND sex = #{sex}
     </select>
 
-    <insert id="insertUser" parameterType="test.pojo.User"
+    <insert id="insertUser" parameterType="top.okay3r.mybatis.pojo.User"
             resultType="java.lang.Integer" statementType="prepared">
         INSERT INTO
         user
@@ -26,7 +26,7 @@
         (#{username},#{birthday},#{sex},#{address})
     </insert>
 
-    <update id="updateUserNameById" parameterType="test.pojo.User"
+    <update id="updateUserNameById" parameterType="top.okay3r.mybatis.pojo.User"
             resultType="java.lang.Integer" statementType="prepared">
         UPDATE user
         SET user.username=#{username}
@@ -40,7 +40,7 @@
         WHERE id=#{id}
     </delete>
 
-    <delete id="deleteUserByNameAndSex" parameterType="test.pojo.User"
+    <delete id="deleteUserByNameAndSex" parameterType="top.okay3r.mybatis.pojo.User"
             resultType="java.lang.Integer" statementType="prepared">
         DELETE
         FROM user
