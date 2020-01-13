@@ -69,7 +69,8 @@ public class TextSqlNode implements SqlNode {
             }
 
             // 使用Ognl api去获取相应的值
-            Object value = OgnlUtils.getValue(expression, context.getBindings());
+            // Object value = OgnlUtils.getValue(expression, context.getBindings());
+            Object value = OgnlUtils.getValue(expression, paramObject);
             String srtValue = value == null ? "" : String.valueOf(value);
             return srtValue;
         }
