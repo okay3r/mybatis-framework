@@ -6,18 +6,17 @@ import java.util.Map;
 
 /**
  * Created By okay3r.top
- * top.okay3r.mybatis.framework.configuration.Configuration
- * User: okay3r
+ * Author: okay3r
  * Date: 2019/12/7
  * Time: 14:05
  * Explain:
  */
 public class Configuration {
     private DataSource dataSource;
-    private Map<String, MapperStatement> statementInfoMap;
+    private Map<String, MapperStatement> mapperStatementMap;
 
     public Configuration() {
-        this.statementInfoMap = new HashMap<>();
+        this.mapperStatementMap = new HashMap<>();
     }
 
     public DataSource getDataSource() {
@@ -28,15 +27,19 @@ public class Configuration {
         this.dataSource = dataSource;
     }
 
-    public Map<String, MapperStatement> getStatementInfoMap() {
-        return statementInfoMap;
+    public Map<String, MapperStatement> getMapperStatementMap() {
+        return mapperStatementMap;
     }
 
-    public void setStatementInfoMap(Map<String, MapperStatement> statementInfoMap) {
-        this.statementInfoMap = statementInfoMap;
+    public void setMapperStatementMap(Map<String, MapperStatement> mapperStatementMap) {
+        this.mapperStatementMap = mapperStatementMap;
     }
 
     public void addMapperStatementToStatementInfoMap(String id, MapperStatement mapperStatement) {
-        this.statementInfoMap.put(id, mapperStatement);
+        this.mapperStatementMap.put(id, mapperStatement);
+    }
+
+    public MapperStatement getMapperStatementById(String id) {
+        return this.mapperStatementMap.get(id);
     }
 }

@@ -11,8 +11,7 @@ import java.io.InputStream;
 
 /**
  * Created By okay3r.top
- * top.okay3r.mybatis.sqlsession.SqlSessionFactoryBuilder
- * User: okay3r
+ * Author: okay3r
  * Date: 2019/12/7
  * Time: 14:05
  * Explain:

@@ -10,8 +10,7 @@ import java.io.InputStream;
 
 /**
  * Created By okay3r.top
- * top.okay3r.mybatis.framework.builder.ConfigurationBuilder
- * User: okay3r
+ * Author: okay3r
  * Date: 2020/1/13
  * Time: 22:52
  * Explain:

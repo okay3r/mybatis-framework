@@ -18,8 +18,7 @@ import java.util.List;
 
 /**
  * Created By okay3r.top
- * top.okay3r.mybatis.framework.parser.XMLMapperParser
- * User: okay3r
+ * Author: okay3r
  * Date: 2019/12/7
  * Time: 14:31
  * Explain:

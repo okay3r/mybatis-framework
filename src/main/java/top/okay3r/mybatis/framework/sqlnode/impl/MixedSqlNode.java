@@ -7,8 +7,7 @@ import java.util.List;
 
 /**
  * Created By okay3r.top
- * top.okay3r.mybatis.framework.sqlnode.impl.MixedSqlNode
- * User: okay3r
+ * Author: okay3r
  * Date: 2020/1/12
  * Time: 23:11
  * Explain:

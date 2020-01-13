@@ -4,8 +4,7 @@ import top.okay3r.mybatis.framework.sqlsource.SqlSource;
 
 /**
  * Created By okay3r.top
- * top.okay3r.mybatis.framework.configuration.StatementInfo
- * User: okay3r
+ * Author: okay3r
  * Date: 2019/12/7
  * Time: 14:40
  * Explain:

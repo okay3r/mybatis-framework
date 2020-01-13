@@ -1,8 +1,9 @@
 package top.okay3r.mybatis.framework.sqlsession.impl;
 
 import top.okay3r.mybatis.framework.config.Configuration;
-import top.okay3r.mybatis.framework.executor.impl.DefaultExecuteHandler;
-import top.okay3r.mybatis.framework.executor.ExecuteHandler;
+import top.okay3r.mybatis.framework.config.MapperStatement;
+import top.okay3r.mybatis.framework.executor.impl.SimpleExecutor;
+import top.okay3r.mybatis.framework.executor.Executor;
 import top.okay3r.mybatis.framework.sqlsession.SqlSession;
 
 import java.sql.SQLException;
@@ -10,8 +11,7 @@ import java.util.List;
 
 /**
  * Created By okay3r.top
- * top.okay3r.mybatis.sqlsession.DefaultSqlSession
- * User: okay3r
+ * Author: okay3r
  * Date: 2019/12/7
  * Time: 14:09
  * Explain:
@@ -34,29 +34,33 @@ public class DefaultSqlSession implements SqlSession {
 
     @Override
     public <T> List<T> selectList(String statementId, Object param) throws SQLException, NoSuchFieldException, InstantiationException, IllegalAccessException {
-        ExecuteHandler executeHandler = new DefaultExecuteHandler();
-        List<T> resultList = executeHandler.query(configuration, statementId, param);
+        Executor executor = new SimpleExecutor();
+        MapperStatement mapperStatement = configuration.getMapperStatementById(statementId);
+        List<T> resultList = executor.query(configuration, mapperStatement, param);
         return resultList;
     }
 
     @Override
     public Integer insert(String statementId, Object param) throws SQLException, NoSuchFieldException, IllegalAccessException {
-        ExecuteHandler executeHandler = new DefaultExecuteHandler();
-        Integer res = executeHandler.insert(configuration, statementId, param);
+        Executor executor = new SimpleExecutor();
+        MapperStatement mapperStatement = configuration.getMapperStatementById(statementId);
+        Integer res = executor.insert(configuration, mapperStatement, param);
         return res;
     }
 
     @Override
     public Integer update(String statementId, Object param) throws NoSuchFieldException, IllegalAccessException, SQLException {
-        ExecuteHandler executeHandler = new DefaultExecuteHandler();
-        Integer updateRows = executeHandler.updateOrDelete(configuration, statementId, param);
+        Executor executor = new SimpleExecutor();
+        MapperStatement mapperStatement = configuration.getMapperStatementById(statementId);
+        Integer updateRows = executor.updateOrDelete(configuration, mapperStatement, param);
         return updateRows;
     }
 
     @Override
     public Integer delete(String statementId, Object param) throws NoSuchFieldException, IllegalAccessException, SQLException {
-        ExecuteHandler executeHandler = new DefaultExecuteHandler();
-        Integer updateRows = executeHandler.updateOrDelete(configuration, statementId, param);
+        Executor executor = new SimpleExecutor();
+        MapperStatement mapperStatement = configuration.getMapperStatementById(statementId);
+        Integer updateRows = executor.updateOrDelete(configuration, mapperStatement, param);
         return updateRows;
     }
 

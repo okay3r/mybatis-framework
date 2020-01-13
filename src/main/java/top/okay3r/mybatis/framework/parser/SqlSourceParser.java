@@ -8,8 +8,7 @@ import top.okay3r.mybatis.framework.utils.ParameterMappingTokenHandler;
 
 /**
  * Created By okay3r.top
- * top.okay3r.mybatis.framework.parser.SqlSourceParser
- * User: okay3r
+ * Author: okay3r
  * Date: 2020/1/13
  * Time: 23:28
  * Explain:

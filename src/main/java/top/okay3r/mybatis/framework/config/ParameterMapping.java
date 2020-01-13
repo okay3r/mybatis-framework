@@ -2,8 +2,7 @@ package top.okay3r.mybatis.framework.config;
 
 /**
  * Created By okay3r.top
- * top.okay3r.mybatis.framework.config.ParameterMapping
- * User: okay3r
+ * Author: okay3r
  * Date: 2020/1/12
  * Time: 22:55
  * Explain:

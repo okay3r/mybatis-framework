@@ -7,8 +7,7 @@ import top.okay3r.mybatis.framework.sqlsessionfactory.SqlSessionFactory;
 
 /**
  * Created By okay3r.top
- * top.okay3r.mybatis.sqlsession.DefaultSqlSessionFactory
- * User: okay3r
+ * Author: okay3r
  * Date: 2019/12/7
  * Time: 14:08
  * Explain:

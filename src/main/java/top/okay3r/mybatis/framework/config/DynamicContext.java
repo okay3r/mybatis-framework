@@ -5,8 +5,7 @@ import java.util.Map;
 
 /**
  * Created By okay3r.top
- * top.okay3r.mybatis.framework.config.DynamicContext
- * User: okay3r
+ * Author: okay3r
  * Date: 2020/1/12
  * Time: 23:10
  * Explain:

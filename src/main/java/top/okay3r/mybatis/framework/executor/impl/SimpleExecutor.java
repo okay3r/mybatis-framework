@@ -3,7 +3,6 @@ package top.okay3r.mybatis.framework.executor.impl;
 import top.okay3r.mybatis.framework.config.Configuration;
 import top.okay3r.mybatis.framework.config.MapperStatement;
 import top.okay3r.mybatis.framework.config.ParameterMapping;
-import top.okay3r.mybatis.framework.executor.ExecuteHandler;
 
 import javax.sql.DataSource;
 import java.lang.reflect.Field;
@@ -13,19 +12,20 @@ import java.util.List;
 
 /**
  * Created By okay3r.top
- * top.okay3r.mybatis.sqlsession.DefaultExecuteHandler
- * User: okay3r
+ * Author: okay3r
  * Date: 2019/12/7
  * Time: 15:00
  * Explain:
  */
-public class DefaultExecuteHandler implements ExecuteHandler {
-    @Override
-    public <T> T query(Configuration configuration, String statementId, Object param) throws SQLException, IllegalAccessException, InstantiationException, NoSuchFieldException {
+public class SimpleExecutor extends BaseExecutor {
+
+    public <T> T queryFromDataBase(Configuration configuration, MapperStatement mapperStatement, Object param) throws
+            IllegalAccessException, InstantiationException, NoSuchFieldException, SQLException {
         //获取数据源
+
         DataSource dataSource = configuration.getDataSource();
         //根据statementId获取对应的statementInfo
-        MapperStatement mapperStatement = configuration.getStatementInfoMap().get(statementId);
+        // MapperStatement mapperStatement = configuration.getStatementInfoMap().get(statementId);
         //根据数据源获取连接
         Connection connection = dataSource.getConnection();
         //创建集合，用于保存查询出来的结果
@@ -58,8 +58,7 @@ public class DefaultExecuteHandler implements ExecuteHandler {
     }
 
 
-    public Integer insert(Configuration configuration, String statementId, Object param) throws SQLException, NoSuchFieldException, IllegalAccessException {
-        MapperStatement mapperStatement = configuration.getStatementInfoMap().get(statementId);
+    public Integer insert(Configuration configuration, MapperStatement mapperStatement, Object param) throws SQLException, NoSuchFieldException, IllegalAccessException {
         Connection connection = configuration.getDataSource().getConnection();
         String statementType = mapperStatement.getStatementType();
         Integer res = null;
@@ -78,9 +77,8 @@ public class DefaultExecuteHandler implements ExecuteHandler {
     }
 
     @Override
-    public Integer updateOrDelete(Configuration configuration, String statementId, Object param) throws SQLException, NoSuchFieldException, IllegalAccessException {
+    public Integer updateOrDelete(Configuration configuration, MapperStatement mapperStatement, Object param) throws SQLException, NoSuchFieldException, IllegalAccessException {
         Connection connection = configuration.getDataSource().getConnection();
-        MapperStatement mapperStatement = configuration.getStatementInfoMap().get(statementId);
         String parameterType = mapperStatement.getStatementType();
         int i = 0;
         if ("prepared".equals(parameterType)) {
