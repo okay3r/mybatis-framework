@@ -1,6 +1,17 @@
 package top.okay3r.mybatis.framework.config;
 
+import top.okay3r.mybatis.framework.executor.Executor;
+import top.okay3r.mybatis.framework.executor.impl.CacheExecutor;
+import top.okay3r.mybatis.framework.executor.impl.SimpleExecutor;
+import top.okay3r.mybatis.framework.handler.ParameterHandler;
+import top.okay3r.mybatis.framework.handler.ResultSetHandler;
+import top.okay3r.mybatis.framework.handler.StatementHandler;
+import top.okay3r.mybatis.framework.handler.impl.DefaultParameterHandler;
+import top.okay3r.mybatis.framework.handler.impl.DefaultResultSetHandler;
+import top.okay3r.mybatis.framework.handler.impl.PreparedStatementHandler;
+
 import javax.sql.DataSource;
+import java.sql.PreparedStatement;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -14,6 +25,7 @@ import java.util.Map;
 public class Configuration {
     private DataSource dataSource;
     private Map<String, MapperStatement> mapperStatementMap;
+    private boolean isCached = true;
 
     public Configuration() {
         this.mapperStatementMap = new HashMap<>();
@@ -41,5 +53,37 @@ public class Configuration {
 
     public MapperStatement getMapperStatementById(String id) {
         return this.mapperStatementMap.get(id);
+    }
+
+    public Executor newExecutor() {
+        Executor executor = null;
+        executor = new SimpleExecutor();
+        if (isCached) {
+            executor = new CacheExecutor(executor);
+        }
+        return executor;
+    }
+
+    public StatementHandler newStatementHandler(MapperStatement mapperStatement) {
+        StatementHandler statementHandler = null;
+        switch (mapperStatement.getStatementType()) {
+            case "prepared":
+                statementHandler = new PreparedStatementHandler(this, mapperStatement);
+                break;
+            case "simple":
+                // statementHandler = new SimpleStatementHandler();
+                break;
+            default:
+
+        }
+        return statementHandler;
+    }
+
+    public ParameterHandler newParameterHandler(MapperStatement mapperStatement) {
+        return new DefaultParameterHandler(mapperStatement);
+    }
+
+    public ResultSetHandler newResultSetHandler(MapperStatement mapperStatement) {
+        return new DefaultResultSetHandler(mapperStatement);
     }
 }

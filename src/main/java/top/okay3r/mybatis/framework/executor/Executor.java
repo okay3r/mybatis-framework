@@ -4,6 +4,7 @@ import top.okay3r.mybatis.framework.config.Configuration;
 import top.okay3r.mybatis.framework.config.MapperStatement;
 
 import java.sql.SQLException;
+import java.util.List;
 
 /**
  * Created By okay3r.top
@@ -13,7 +14,7 @@ import java.sql.SQLException;
  * Explain:
  */
 public interface Executor {
-    <T> T query(Configuration configuration, MapperStatement mapperStatement, Object param) throws SQLException,
+    <E> List<E> query(Configuration configuration, MapperStatement mapperStatement, Object param) throws SQLException,
             IllegalAccessException,
             InstantiationException, NoSuchFieldException;
 

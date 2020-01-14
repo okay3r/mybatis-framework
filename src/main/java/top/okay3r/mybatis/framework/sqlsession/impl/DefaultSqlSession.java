@@ -34,7 +34,7 @@ public class DefaultSqlSession implements SqlSession {
 
     @Override
     public <T> List<T> selectList(String statementId, Object param) throws SQLException, NoSuchFieldException, InstantiationException, IllegalAccessException {
-        Executor executor = new SimpleExecutor();
+        Executor executor = configuration.newExecutor();
         MapperStatement mapperStatement = configuration.getMapperStatementById(statementId);
         List<T> resultList = executor.query(configuration, mapperStatement, param);
         return resultList;
@@ -42,7 +42,7 @@ public class DefaultSqlSession implements SqlSession {
 
     @Override
     public Integer insert(String statementId, Object param) throws SQLException, NoSuchFieldException, IllegalAccessException {
-        Executor executor = new SimpleExecutor();
+        Executor executor = configuration.newExecutor();
         MapperStatement mapperStatement = configuration.getMapperStatementById(statementId);
         Integer res = executor.insert(configuration, mapperStatement, param);
         return res;
@@ -50,7 +50,7 @@ public class DefaultSqlSession implements SqlSession {
 
     @Override
     public Integer update(String statementId, Object param) throws NoSuchFieldException, IllegalAccessException, SQLException {
-        Executor executor = new SimpleExecutor();
+        Executor executor = configuration.newExecutor();
         MapperStatement mapperStatement = configuration.getMapperStatementById(statementId);
         Integer updateRows = executor.updateOrDelete(configuration, mapperStatement, param);
         return updateRows;
@@ -58,7 +58,7 @@ public class DefaultSqlSession implements SqlSession {
 
     @Override
     public Integer delete(String statementId, Object param) throws NoSuchFieldException, IllegalAccessException, SQLException {
-        Executor executor = new SimpleExecutor();
+        Executor executor = configuration.newExecutor();
         MapperStatement mapperStatement = configuration.getMapperStatementById(statementId);
         Integer updateRows = executor.updateOrDelete(configuration, mapperStatement, param);
         return updateRows;

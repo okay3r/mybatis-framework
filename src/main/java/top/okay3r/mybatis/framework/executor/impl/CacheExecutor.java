@@ -5,6 +5,7 @@ import top.okay3r.mybatis.framework.config.MapperStatement;
 import top.okay3r.mybatis.framework.executor.Executor;
 
 import java.sql.SQLException;
+import java.util.List;
 
 /**
  * Created By okay3r.top
@@ -14,10 +15,14 @@ import java.sql.SQLException;
  * Explain:
  */
 public class CacheExecutor implements Executor {
-    Executor delegate = new SimpleExecutor();
+    private Executor delegate;
+
+    public CacheExecutor(Executor executor) {
+        this.delegate = executor;
+    }
 
     @Override
-    public <T> T query(Configuration configuration, MapperStatement mapperStatement, Object param) throws SQLException, IllegalAccessException, InstantiationException, NoSuchFieldException {
+    public <E> List<E> query(Configuration configuration, MapperStatement mapperStatement, Object param) throws SQLException, IllegalAccessException, InstantiationException, NoSuchFieldException {
         // 如果二级缓存中没有则从一级缓存中查找
         // if...
         // TODO 二级缓存
