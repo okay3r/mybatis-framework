@@ -7,13 +7,18 @@ import top.okay3r.mybatis.framework.sqlsource.SqlSource;
  * Author: okay3r
  * Date: 2019/12/7
  * Time: 14:40
- * Explain:
+ * Explain: mapper.xml中每一个Statement标签对应的信息
  */
 public class MapperStatement {
+    //作为全局唯一标识，使用namespace+id
     private String id;
+    //入参类型
     private Class parameterTypeClass;
+    //返回值类型
     private Class resultTypeClass;
+    //Statement类型
     private String statementType;
+    //sql信息
     private SqlSource sqlSource;
 
     public MapperStatement(String id, Class parameterTypeClass, Class resultTypeClass, String statementType, SqlSource sqlSource) {

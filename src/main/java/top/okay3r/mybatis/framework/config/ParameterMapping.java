@@ -5,7 +5,7 @@ package top.okay3r.mybatis.framework.config;
  * Author: okay3r
  * Date: 2020/1/12
  * Time: 22:55
- * Explain:
+ * Explain: 用于封装入参
  */
 public class ParameterMapping {
     private String name;

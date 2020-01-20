@@ -20,10 +20,11 @@ import java.util.List;
  * Author: okay3r
  * Date: 2020/1/13
  * Time: 23:21
- * Explain:
+ * Explain: 负责解析Statement标签中的信息
  */
 public class XmlScriptNodeParser {
 
+    //是否为动态标签
     private boolean isDynamic = false;
 
     public SqlSource parseScriptNode(Element statementElement) {

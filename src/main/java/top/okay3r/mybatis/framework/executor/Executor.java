@@ -11,7 +11,7 @@ import java.util.List;
  * Author: okay3r
  * Date: 2019/12/7
  * Time: 15:01
- * Explain:
+ * Explain: 执行器
  */
 public interface Executor {
     <E> List<E> query(Configuration configuration, MapperStatement mapperStatement, Object param) throws SQLException,

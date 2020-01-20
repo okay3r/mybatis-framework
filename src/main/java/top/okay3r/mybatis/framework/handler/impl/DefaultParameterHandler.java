@@ -3,6 +3,7 @@ package top.okay3r.mybatis.framework.handler.impl;
 import top.okay3r.mybatis.framework.config.MapperStatement;
 import top.okay3r.mybatis.framework.config.ParameterMapping;
 import top.okay3r.mybatis.framework.handler.ParameterHandler;
+import top.okay3r.mybatis.framework.utils.SimpleTypeRegistry;
 
 import java.lang.reflect.Field;
 import java.sql.PreparedStatement;
@@ -15,7 +16,7 @@ import java.util.List;
  * Author: okay3r
  * Date: 2020/1/14
  * Time: 22:39
- * Explain:
+ * Explain: 入参处理器的默认实现
  */
 public class DefaultParameterHandler implements ParameterHandler {
     private MapperStatement mapperStatement;
@@ -24,14 +25,16 @@ public class DefaultParameterHandler implements ParameterHandler {
         this.mapperStatement = mapperStatement;
     }
 
+    //对入参进行处理
     @Override
     public void handleParameter(Statement statement, Object param) {
+        //类型转换为PreparedStatement
         PreparedStatement preparedStatement = (PreparedStatement) statement;
-        //获取参数类型
+        //获取入参类型
         Class parameterTypeClass = mapperStatement.getParameterTypeClass();
         //由connection创建PreparedStatement，Statement.RETURN_GENERATED_KEYS：设置返回主键
-        //如果是Integer类型或String类型，则将参数直接设置到preparedStatement中
-        if (parameterTypeClass == Integer.class || parameterTypeClass == String.class) {
+        //如果是基本类型，则将参数直接设置到preparedStatement中
+        if (SimpleTypeRegistry.isSimpleType(parameterTypeClass)) {
             try {
                 preparedStatement.setObject(1, param);
             } catch (SQLException e) {

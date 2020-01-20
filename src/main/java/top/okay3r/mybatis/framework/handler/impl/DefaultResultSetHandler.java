@@ -15,7 +15,7 @@ import java.util.List;
  * Author: okay3r
  * Date: 2020/1/14
  * Time: 23:01
- * Explain:
+ * Explain: 默认返回值处理器实现类
  */
 public class DefaultResultSetHandler implements ResultSetHandler {
     private MapperStatement mapperStatement;
@@ -24,9 +24,12 @@ public class DefaultResultSetHandler implements ResultSetHandler {
         this.mapperStatement = mapperStatement;
     }
 
+    //对ResultSet进行处理
     @Override
     public <E> List<E> handleResultSet(ResultSet resultSet) {
+        //创建resultList用于保存处理后的结果
         List<Object> resultList = new ArrayList<>();
+        //获取返回值类型
         Class resultTypeClass = mapperStatement.getResultTypeClass();
         try {
             while (resultSet.next()) {

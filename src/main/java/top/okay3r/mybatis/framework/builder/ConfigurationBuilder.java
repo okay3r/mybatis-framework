@@ -13,7 +13,7 @@ import java.io.InputStream;
  * Author: okay3r
  * Date: 2020/1/13
  * Time: 22:52
- * Explain:
+ * Explain:创建全局唯一的Configuration，解析配置文件到configuration中
  */
 public class ConfigurationBuilder {
     private Configuration configuration;
@@ -23,6 +23,7 @@ public class ConfigurationBuilder {
     }
 
     public Configuration buildConfiguration(InputStream inputStream) {
+        //获取xml配置文件
         Document document = DocumentUtils.readDocument(inputStream);
         //解析全局xml配置文件 sqlMapConfig.xml
         new XMLConfigParser(configuration).parseConfig(document.getRootElement());

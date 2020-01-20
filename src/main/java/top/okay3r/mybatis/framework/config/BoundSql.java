@@ -8,7 +8,8 @@ import java.util.List;
  * Author: okay3r
  * Date: 2020/1/12
  * Time: 22:59
- * Explain:
+ * Explain: 用于保存解析后的sql语句和参数。
+ *          即带sqlText为'?'的sql语句，并且把参数保存到parameterMappingList中
  */
 public class BoundSql {
     private String sqlText;

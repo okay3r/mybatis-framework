@@ -21,6 +21,7 @@ public class XmlStatementParser {
         this.configuration = configuration;
     }
 
+    //解析Statement标签select、insert、update、delete
     public void parseStatement(String namespace, List<Element> statementList) {
         for (Element statementElement : statementList) {
             //statementId采用namespace+id的方式
@@ -46,7 +47,9 @@ public class XmlStatementParser {
         }
     }
 
+    //创建一个Statement对应的SqlSource
     private SqlSource createSqlSource(Element statementElement) {
+        //解析Statement中的SqlNode
         SqlSource sqlSource = new XmlScriptNodeParser().parseScriptNode(statementElement);
         return sqlSource;
     }

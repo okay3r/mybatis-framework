@@ -11,7 +11,7 @@ import java.util.List;
  * Author: okay3r
  * Date: 2020/1/14
  * Time: 22:03
- * Explain:
+ * Explain: Statement处理器
  */
 public interface StatementHandler {
     Statement prepare(Connection connection, Object param);

@@ -8,7 +8,7 @@ import java.util.List;
  * Author: okay3r
  * Date: 2020/1/14
  * Time: 22:58
- * Explain:
+ * Explain: 返回值处理器
  */
 public interface ResultSetHandler {
     <E> List<E> handleResultSet(ResultSet resultSet);

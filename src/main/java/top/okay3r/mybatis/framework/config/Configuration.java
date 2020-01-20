@@ -20,11 +20,14 @@ import java.util.Map;
  * Author: okay3r
  * Date: 2019/12/7
  * Time: 14:05
- * Explain:
+ * Explain: 配置信息类，在全局中有且只有一个实例
  */
 public class Configuration {
+    //数据库连接池
     private DataSource dataSource;
+    //key为namespace+id作为唯一标识，value为每个statement标签中的信息
     private Map<String, MapperStatement> mapperStatementMap;
+    //是否启用二级缓存
     private boolean isCached = true;
 
     public Configuration() {
@@ -57,15 +60,19 @@ public class Configuration {
 
     public Executor newExecutor() {
         Executor executor = null;
+        //首先创建一个Executor为默认实现类型
         executor = new SimpleExecutor();
+        //如果开启了二级缓存，则Executor的为CacheExecutor
         if (isCached) {
             executor = new CacheExecutor(executor);
         }
         return executor;
     }
 
+    //创建statementHandler
     public StatementHandler newStatementHandler(MapperStatement mapperStatement) {
         StatementHandler statementHandler = null;
+        //判断Statement的类型
         switch (mapperStatement.getStatementType()) {
             case "prepared":
                 statementHandler = new PreparedStatementHandler(this, mapperStatement);
@@ -78,11 +85,12 @@ public class Configuration {
         }
         return statementHandler;
     }
-
+    //创建parameterHandler
     public ParameterHandler newParameterHandler(MapperStatement mapperStatement) {
         return new DefaultParameterHandler(mapperStatement);
     }
 
+    //床架resultSetHandler
     public ResultSetHandler newResultSetHandler(MapperStatement mapperStatement) {
         return new DefaultResultSetHandler(mapperStatement);
     }

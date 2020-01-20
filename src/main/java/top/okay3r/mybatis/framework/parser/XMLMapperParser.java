@@ -21,7 +21,7 @@ import java.util.List;
  * Author: okay3r
  * Date: 2019/12/7
  * Time: 14:31
- * Explain:
+ * Explain: 负责解析mapper.xml映射文件
  */
 public class XMLMapperParser {
     private Configuration configuration;

@@ -18,7 +18,7 @@ import java.util.List;
  * Author: okay3r
  * Date: 2019/12/7
  * Time: 15:00
- * Explain:
+ * Explain: 默认Executor的实现
  */
 public class SimpleExecutor extends BaseExecutor {
 
@@ -28,9 +28,13 @@ public class SimpleExecutor extends BaseExecutor {
         DataSource dataSource = configuration.getDataSource();
         //根据数据源获取连接
         Connection connection = dataSource.getConnection();
+        //通过configuration获取该Statement的处理器
         StatementHandler statementHandler = configuration.newStatementHandler(mapperStatement);
+        //通过Statement处理器获取Statement
         Statement statement = statementHandler.prepare(connection, param);
+        //为statement设置参数
         statementHandler.parameterize(statement, param);
+        //通过Statement处理器进行查询，并获取结果集
         List<Object> resultList = statementHandler.query(statement);
         return (List<E>) resultList;
     }

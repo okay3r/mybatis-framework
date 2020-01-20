@@ -11,7 +11,7 @@ import top.okay3r.mybatis.framework.utils.ParameterMappingTokenHandler;
  * Author: okay3r
  * Date: 2020/1/13
  * Time: 23:28
- * Explain:
+ * Explain: 将#{}的处理逻辑进行封装
  */
 public class SqlSourceParser {
     private DynamicContext context;
