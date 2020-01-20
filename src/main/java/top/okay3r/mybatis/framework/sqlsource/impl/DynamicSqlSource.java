@@ -13,7 +13,8 @@ import top.okay3r.mybatis.framework.utils.ParameterMappingTokenHandler;
  * Author: okay3r
  * Date: 2020/1/12
  * Time: 23:06
- * Explain:
+ * Explain: 封装带有${}或者动态SQL标签的SQL信息
+ *          解析工作发生在每一次调用getBoundSql方法的时候
  */
 public class DynamicSqlSource implements SqlSource {
     private SqlNode rootSqlNode;

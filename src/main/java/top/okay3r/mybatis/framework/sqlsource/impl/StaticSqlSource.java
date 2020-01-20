@@ -11,7 +11,7 @@ import java.util.List;
  * Author: okay3r
  * Date: 2020/1/12
  * Time: 23:06
- * Explain:
+ * Explain: 存储被解析之后的SQL信息和参数信息
  */
 public class StaticSqlSource implements SqlSource {
     private String sql;

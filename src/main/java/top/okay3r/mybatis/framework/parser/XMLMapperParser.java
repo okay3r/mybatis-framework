@@ -30,6 +30,10 @@ public class XMLMapperParser {
         this.configuration = configuration;
     }
 
+    /***
+     * 对Statement标签进行处理
+     * @param mapperElement
+     */
     public void parseMapper(Element mapperElement) {
         //获取namespace
         String namespace = mapperElement.attributeValue("namespace");

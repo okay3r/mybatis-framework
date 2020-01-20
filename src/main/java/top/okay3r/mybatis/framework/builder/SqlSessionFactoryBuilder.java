@@ -14,7 +14,7 @@ import java.io.InputStream;
  * Author: okay3r
  * Date: 2019/12/7
  * Time: 14:05
- * Explain:
+ * Explain: 通过configuration中的信息创建SqlSessionFactory
  */
 public class SqlSessionFactoryBuilder {
 

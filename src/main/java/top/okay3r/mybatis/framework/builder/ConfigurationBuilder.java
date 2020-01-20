@@ -13,7 +13,7 @@ import java.io.InputStream;
  * Author: okay3r
  * Date: 2020/1/13
  * Time: 22:52
- * Explain:创建全局唯一的Configuration，解析配置文件到configuration中
+ * Explain: 创建全局唯一的Configuration，解析配置文件到configuration中
  */
 public class ConfigurationBuilder {
     private Configuration configuration;

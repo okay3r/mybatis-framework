@@ -10,7 +10,7 @@ import java.util.List;
  * Author: okay3r
  * Date: 2020/1/12
  * Time: 23:11
- * Explain:
+ * Explain: 组合对象，封装SqlNode的list集合
  */
 public class MixedSqlNode implements SqlNode {
     private List<SqlNode> sqlNodeList;
@@ -19,6 +19,10 @@ public class MixedSqlNode implements SqlNode {
         this.sqlNodeList = sqlNodeList;
     }
 
+    /***
+     * 对外提供封装数据的操作
+     * @param context
+     */
     @Override
     public void apply(DynamicContext context) {
         for (SqlNode sqlNode : sqlNodeList) {

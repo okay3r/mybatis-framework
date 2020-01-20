@@ -38,7 +38,7 @@ public class XmlStatementParser {
             } catch (ClassNotFoundException e) {
                 e.printStackTrace();
             }
-            //获取sql语句
+            //获取SqlSource
             SqlSource sqlSource = createSqlSource(statementElement);
             //将各个信息封装进一个新创建的StatementInfo
             MapperStatement mapperStatement = new MapperStatement(statementId, parameterTypeClass, resultTypeClass, statementType, sqlSource);

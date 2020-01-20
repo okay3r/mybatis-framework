@@ -13,7 +13,8 @@ import top.okay3r.mybatis.framework.utils.ParameterMappingTokenHandler;
  * Author: okay3r
  * Date: 2020/1/12
  * Time: 23:06
- * Explain:
+ * Explain: 封装最多只带有#{}的SQL信息
+ *          解析工作发生在第一次构造RawSqlSource的时候，#{}可以预编译，只需要被解析一次
  */
 public class RawSqlSource implements SqlSource {
     private SqlSource sqlSource;

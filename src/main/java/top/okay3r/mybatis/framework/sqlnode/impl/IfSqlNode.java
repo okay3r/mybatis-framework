@@ -9,7 +9,7 @@ import top.okay3r.mybatis.framework.utils.OgnlUtils;
  * Author: okay3r
  * Date: 2020/1/12
  * Time: 23:12
- * Explain:
+ * Explain: 封装if标签中的信息
  */
 public class IfSqlNode implements SqlNode {
     private String text;
