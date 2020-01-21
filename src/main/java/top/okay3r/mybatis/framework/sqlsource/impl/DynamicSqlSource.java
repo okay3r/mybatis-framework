@@ -25,7 +25,6 @@ public class DynamicSqlSource implements SqlSource {
 
     @Override
     public BoundSql getBoundSql(Object param) {
-        // #{}处理的时候，不需要入参对象的支持
         DynamicContext context = new DynamicContext(param);
         // 处理SqlNode，先去处理动态标签和${}，拼接成一条SQL文本，该SQL文本还包含#{}
         rootSqlNode.apply(context);

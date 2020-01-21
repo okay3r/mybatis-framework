@@ -75,10 +75,9 @@ public class PreparedStatementHandler implements StatementHandler {
             //创建查询
             resultSet = preparedStatement.executeQuery();
             //对返回值行处理
-            return resultSetHandler.handleResultSet(resultSet);
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        return null;
+        return resultSetHandler.handleResultSet(resultSet);
     }
 }
